@@ -1,0 +1,29 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import java.util.concurrent.TimeUnit;
+public class TooltipVerfy{
+   public static void main(String[] args) {
+      System.setProperty("webdriver.gecko.driver",
+         "C:\\Users\\ghs6kor\\Desktop\\Java\\geckodriver.exe");
+      WebDriver driver = new FirefoxDriver();
+      //implicit wait
+      driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+      //URL launch
+      driver.get("https://www.tutorialspoint.com/index.htm");
+      //identify element
+      WebElement n = driver.findElement(By.linkText("Tools"));
+
+      //obtain title attribute
+      String s = n.getAttribute("title");
+      //verify tooltip text
+
+      if(s.equals("Tools - Online Development and Testing Tools")) {
+         System.out.println("Tooltip text matched");
+      }else{
+         System.out.println("Tooltip text not matched");
+      }
+      driver.quit();
+   }
+}
